@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		571C2D28199FB9BE00D6DB01 /* Crow.h in Headers */ = {isa = PBXBuildFile; fileRef = 571C2D27199FB9BE00D6DB01 /* Crow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2D31199FB9BE00D6DB01 /* CrowTests.swift */; };
+		576608C6199FC2B4000D3877 /* Dom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C5199FC2B4000D3877 /* Dom.swift */; };
+		576608C7199FC2B4000D3877 /* Dom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C5199FC2B4000D3877 /* Dom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,7 @@
 		571C2D2D199FB9BE00D6DB01 /* CrowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		571C2D30199FB9BE00D6DB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571C2D31199FB9BE00D6DB01 /* CrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowTests.swift; sourceTree = "<group>"; };
+		576608C5199FC2B4000D3877 /* Dom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 		571C2D18199FB9BD00D6DB01 = {
 			isa = PBXGroup;
 			children = (
+				576608C5199FC2B4000D3877 /* Dom.swift */,
 				571C2D24199FB9BE00D6DB01 /* Crow */,
 				571C2D2E199FB9BE00D6DB01 /* CrowTests */,
 				571C2D23199FB9BE00D6DB01 /* Products */,
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576608C6199FC2B4000D3877 /* Dom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576608C7199FC2B4000D3877 /* Dom.swift in Sources */,
 				571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +300,7 @@
 		571C2D36199FB9BE00D6DB01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -305,12 +312,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		571C2D37199FB9BE00D6DB01 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -376,6 +385,7 @@
 				571C2D37199FB9BE00D6DB01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		571C2D38199FB9BE00D6DB01 /* Build configuration list for PBXNativeTarget "CrowTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +394,7 @@
 				571C2D3A199FB9BE00D6DB01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
