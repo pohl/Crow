@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		571C2D28199FB9BE00D6DB01 /* Crow.h in Headers */ = {isa = PBXBuildFile; fileRef = 571C2D27199FB9BE00D6DB01 /* Crow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2D31199FB9BE00D6DB01 /* CrowTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		571C2D22199FB9BE00D6DB01 /* Crow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Crow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		571C2D26199FB9BE00D6DB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		571C2D27199FB9BE00D6DB01 /* Crow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Crow.h; sourceTree = "<group>"; };
+		571C2D2D199FB9BE00D6DB01 /* CrowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		571C2D30199FB9BE00D6DB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		571C2D31199FB9BE00D6DB01 /* CrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		571C2D1E199FB9BE00D6DB01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		571C2D2A199FB9BE00D6DB01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		571C2D18199FB9BD00D6DB01 = {
+			isa = PBXGroup;
+			children = (
+				571C2D24199FB9BE00D6DB01 /* Crow */,
+				571C2D2E199FB9BE00D6DB01 /* CrowTests */,
+				571C2D23199FB9BE00D6DB01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		571C2D23199FB9BE00D6DB01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				571C2D22199FB9BE00D6DB01 /* Crow.framework */,
+				571C2D2D199FB9BE00D6DB01 /* CrowTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		571C2D24199FB9BE00D6DB01 /* Crow */ = {
+			isa = PBXGroup;
+			children = (
+				571C2D27199FB9BE00D6DB01 /* Crow.h */,
+				571C2D25199FB9BE00D6DB01 /* Supporting Files */,
+			);
+			path = Crow;
+			sourceTree = "<group>";
+		};
+		571C2D25199FB9BE00D6DB01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				571C2D26199FB9BE00D6DB01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		571C2D2E199FB9BE00D6DB01 /* CrowTests */ = {
+			isa = PBXGroup;
+			children = (
+				571C2D31199FB9BE00D6DB01 /* CrowTests.swift */,
+				571C2D2F199FB9BE00D6DB01 /* Supporting Files */,
+			);
+			path = CrowTests;
+			sourceTree = "<group>";
+		};
+		571C2D2F199FB9BE00D6DB01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				571C2D30199FB9BE00D6DB01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		571C2D1F199FB9BE00D6DB01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571C2D28199FB9BE00D6DB01 /* Crow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		571C2D21199FB9BE00D6DB01 /* Crow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 571C2D35199FB9BE00D6DB01 /* Build configuration list for PBXNativeTarget "Crow" */;
+			buildPhases = (
+				571C2D1D199FB9BE00D6DB01 /* Sources */,
+				571C2D1E199FB9BE00D6DB01 /* Frameworks */,
+				571C2D1F199FB9BE00D6DB01 /* Headers */,
+				571C2D20199FB9BE00D6DB01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Crow;
+			productName = Crow;
+			productReference = 571C2D22199FB9BE00D6DB01 /* Crow.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		571C2D2C199FB9BE00D6DB01 /* CrowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 571C2D38199FB9BE00D6DB01 /* Build configuration list for PBXNativeTarget "CrowTests" */;
+			buildPhases = (
+				571C2D29199FB9BE00D6DB01 /* Sources */,
+				571C2D2A199FB9BE00D6DB01 /* Frameworks */,
+				571C2D2B199FB9BE00D6DB01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrowTests;
+			productName = CrowTests;
+			productReference = 571C2D2D199FB9BE00D6DB01 /* CrowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		571C2D19199FB9BD00D6DB01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "the screaming organization";
+				TargetAttributes = {
+					571C2D21199FB9BE00D6DB01 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					571C2D2C199FB9BE00D6DB01 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 571C2D1C199FB9BD00D6DB01 /* Build configuration list for PBXProject "Crow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 571C2D18199FB9BD00D6DB01;
+			productRefGroup = 571C2D23199FB9BE00D6DB01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				571C2D21199FB9BE00D6DB01 /* Crow */,
+				571C2D2C199FB9BE00D6DB01 /* CrowTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		571C2D20199FB9BE00D6DB01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		571C2D2B199FB9BE00D6DB01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		571C2D1D199FB9BE00D6DB01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		571C2D29199FB9BE00D6DB01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		571C2D33199FB9BE00D6DB01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		571C2D34199FB9BE00D6DB01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		571C2D36199FB9BE00D6DB01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Crow/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		571C2D37199FB9BE00D6DB01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Crow/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		571C2D39199FB9BE00D6DB01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CrowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		571C2D3A199FB9BE00D6DB01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CrowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		571C2D1C199FB9BD00D6DB01 /* Build configuration list for PBXProject "Crow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				571C2D33199FB9BE00D6DB01 /* Debug */,
+				571C2D34199FB9BE00D6DB01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		571C2D35199FB9BE00D6DB01 /* Build configuration list for PBXNativeTarget "Crow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				571C2D36199FB9BE00D6DB01 /* Debug */,
+				571C2D37199FB9BE00D6DB01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		571C2D38199FB9BE00D6DB01 /* Build configuration list for PBXNativeTarget "CrowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				571C2D39199FB9BE00D6DB01 /* Debug */,
+				571C2D3A199FB9BE00D6DB01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 571C2D19199FB9BD00D6DB01 /* Project object */;
+}
