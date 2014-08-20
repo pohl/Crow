@@ -11,6 +11,9 @@
 		571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2D31199FB9BE00D6DB01 /* CrowTests.swift */; };
 		576608C6199FC2B4000D3877 /* Dom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C5199FC2B4000D3877 /* Dom.swift */; };
 		576608C7199FC2B4000D3877 /* Dom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C5199FC2B4000D3877 /* Dom.swift */; };
+		576608C919A18678000D3877 /* Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C819A18678000D3877 /* Html.swift */; };
+		576608CA19A18678000D3877 /* Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C819A18678000D3877 /* Html.swift */; };
+		57FACBA319A453DA00FF8EDF /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 57FACBA219A453DA00FF8EDF /* test.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		571C2D30199FB9BE00D6DB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571C2D31199FB9BE00D6DB01 /* CrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowTests.swift; sourceTree = "<group>"; };
 		576608C5199FC2B4000D3877 /* Dom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dom.swift; sourceTree = "<group>"; };
+		576608C819A18678000D3877 /* Html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Html.swift; sourceTree = "<group>"; };
+		57B9678C19A2FAB9000A3E3E /* Scratchpad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Scratchpad.playground; sourceTree = "<group>"; };
+		57FACBA219A453DA00FF8EDF /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = test.html; path = CrowTests/test.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,10 +50,13 @@
 		571C2D18199FB9BD00D6DB01 = {
 			isa = PBXGroup;
 			children = (
+				57B9678C19A2FAB9000A3E3E /* Scratchpad.playground */,
 				576608C5199FC2B4000D3877 /* Dom.swift */,
+				576608C819A18678000D3877 /* Html.swift */,
 				571C2D24199FB9BE00D6DB01 /* Crow */,
 				571C2D2E199FB9BE00D6DB01 /* CrowTests */,
 				571C2D23199FB9BE00D6DB01 /* Products */,
+				57FACBA219A453DA00FF8EDF /* test.html */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FACBA319A453DA00FF8EDF /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576608C919A18678000D3877 /* Html.swift in Sources */,
 				576608C6199FC2B4000D3877 /* Dom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576608CA19A18678000D3877 /* Html.swift in Sources */,
 				576608C7199FC2B4000D3877 /* Dom.swift in Sources */,
 				571C2D32199FB9BE00D6DB01 /* CrowTests.swift in Sources */,
 			);
