@@ -14,6 +14,7 @@
 		576608C919A18678000D3877 /* Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C819A18678000D3877 /* Html.swift */; };
 		576608CA19A18678000D3877 /* Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576608C819A18678000D3877 /* Html.swift */; };
 		57FACBA319A453DA00FF8EDF /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 57FACBA219A453DA00FF8EDF /* test.html */; };
+		57FACBA419A51E1B00FF8EDF /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 57FACBA219A453DA00FF8EDF /* test.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FACBA419A51E1B00FF8EDF /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

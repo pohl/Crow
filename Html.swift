@@ -5,9 +5,6 @@
 //  Created by Pohl Longsine on 8/17/14.
 //  Copyright (c) 2014 the screaming organization. All rights reserved.
 //
-
-import Foundation
-
 // A simple parser for a tiny subset of HTML.
 //
 // Can parse basic opening and closing tags, and text nodes.
@@ -20,6 +17,7 @@ import Foundation
 // * Non-well-formed markup
 // * Characteracter entities
 
+import Foundation
 
 struct Parser {
     var pos: String.UnicodeScalarView.Index
@@ -31,7 +29,7 @@ struct Parser {
     }
 }
 
-/// Parse an HTML document and return the root element.
+// Parse an HTML document and return the root element.
 public func parse(source: String) -> Node {
     var parser = Parser(input: source)
     let nodes = parser.parseNodes()
@@ -53,7 +51,7 @@ extension Character {
 }
 
 extension Parser {
-    /// Parse a sequence of sibling nodes.
+    // Parse a sequence of sibling nodes.
     mutating func parseNodes() -> [Node] {
         var nodes: [Node] = []
         while (true) {
@@ -61,24 +59,24 @@ extension Parser {
             if self.eof() || self.startsWith("</") {
                 break
             }
-            nodes.append(self.parse_node())
+            nodes.append(self.parseNode())
         }
         return nodes
     }
     
-    /// Parse a single node.
-    mutating func parse_node() -> Node {
+    // Parse a single node.
+    mutating func parseNode() -> Node {
         switch self.nextCharacter() {
             case "<": return self.parseElement()
             case _: return self.parseText()
         }
     }
     
-    /// Parse a single element, including its open tag, contents, and closing tag.
+    // Parse a single element, including its open tag, contents, and closing tag.
     mutating func parseElement() -> Node {
         // Opening tag.
         assert(self.consumeCharacter() == "<")
-        let tag_name = self.parseTagName()
+        let tagName = self.parseTagName()
         let attrs = self.parseAttributes()
         assert(self.consumeCharacter() == ">")
         
@@ -88,18 +86,18 @@ extension Parser {
         // Closing tag.
         assert(self.consumeCharacter() == "<")
         assert(self.consumeCharacter() == "/")
-        assert(self.parseTagName() == tag_name)
+        assert(self.parseTagName() == tagName)
         assert(self.consumeCharacter() == ">")
         
-        return Node(name: tag_name, attrs: attrs, children: children)
+        return Node(name: tagName, attrs: attrs, children: children)
     }
     
-    /// Parse a tag or attribute name.
+    // Parse a tag or attribute name.
     mutating func parseTagName() -> String {
         return self.consumeWhile( {c in c.isMemberOf(NSCharacterSet.alphanumericCharacterSet()) })
     }
     
-    /// Parse a list of name="value" pairs, separated by whitespace.
+    // Parse a list of name="value" pairs, separated by whitespace.
     mutating func parseAttributes() -> AttrMap {
         var attributes: AttrMap = [:]
         while (true) {
@@ -113,7 +111,7 @@ extension Parser {
         return attributes
     }
     
-    /// Parse a single name="value" pair.
+    // Parse a single name="value" pair.
     mutating func parseAttr() -> (String, String) {
         let name = self.parseTagName()
         assert(self.consumeCharacter() == "=")
@@ -121,26 +119,26 @@ extension Parser {
         return (name, value)
     }
     
-    /// Parse a quoted value.
+    // Parse a quoted value.
     mutating func parseAttrValue() -> String {
-        let open_quote = self.consumeCharacter()
-        assert(open_quote == "\"" || open_quote == "'")
-        let value = self.consumeWhile( {c in c != open_quote} )
-        assert(self.consumeCharacter() == open_quote)
+        let openQuote = self.consumeCharacter()
+        assert(openQuote == "\"" || openQuote == "'")
+        let value = self.consumeWhile( {c in c != openQuote} )
+        assert(self.consumeCharacter() == openQuote)
         return value
     }
     
-    /// Parse a text node.
+    // Parse a text node.
     mutating func parseText() -> Node {
         return Node(data: self.consumeWhile({c in c != "<" }))
     }
     
-    /// Consume and discard zero or more whitespace Character.
+    // Consume and discard zero or more whitespace Character.
     mutating func consumeWhitespace() {
         self.consumeWhile( {c in c.isMemberOf(NSCharacterSet.whitespaceCharacterSet()) })
     }
     
-    /// Consume Character until `test` returns false.
+    // Consume Character until `test` returns false.
     mutating func consumeWhile(test: Character -> Bool) -> String {
         var result = ""
         while !self.eof() && test(self.nextCharacter()) {
@@ -149,30 +147,31 @@ extension Parser {
         return result
     }
     
-    /// Return the current Character, and advance self.pos to the next Character.
+    // Return the current Character, and advance self.pos to the next Character.
     mutating func consumeCharacter() -> Character {
         let result = input[self.pos]
         self.pos = self.pos.successor()
         return Character(result)
     }
     
-    /// Read the current Character without consuming it.
+    // Read the current Character without consuming it.
     func nextCharacter() -> Character{
         return Character(input[self.pos])
     }
     
-    /// Does the current input start with the given string?
+    // Does the current input start with the given string?
     func startsWith(s: String) -> Bool {
         var index = self.pos
         for character in s {
             if character != Character(self.input[index]) {
                 return false
             }
+            index = index.successor()
         }
         return true
     }
     
-    /// Return true if all input is consumed.
+    // Return true if all input is consumed.
     func eof() -> Bool {
         return self.pos >= self.input.endIndex
     }

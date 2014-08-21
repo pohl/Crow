@@ -20,12 +20,14 @@ public struct Node {
     public let nodeType: NodeType
 }
 
-public enum NodeType {
+public enum NodeType: Equatable {
     case Element(ElementData)
     case Text(String)
 }
 
-public struct ElementData {
+
+
+public struct ElementData: Equatable {
     public let tagName: String
     public let attributes: AttrMap
 }
@@ -54,6 +56,60 @@ extension Node {
     
 }
 
+
+extension Node: Printable {
+
+    public var description: String {
+        switch self.nodeType {
+        case .Text(let text):
+            return text
+        case .Element(let data):
+            var b = self.nodeType.description
+            for child in self.children {
+                b = b + child.description
+            }
+            return b + data.closingTag
+        }
+    }
+
+}
+
+extension NodeType: Printable {
+
+    public var description: String {
+        switch self {
+        case .Text(let text):
+            return text
+        case .Element(let data):
+            return data.description
+        }
+
+    }
+
+}
+
+extension ElementData: Printable {
+
+    public var description: String {
+        var b = "<" + self.tagName
+        if self.attributes.count > 0 {
+            b = b + " "
+            for (key,value) in self.attributes {
+                b = b + "\(key)=\"\(value)\""
+            }
+        }
+        b = b + ">"
+        return b
+    }
+
+    public var closingTag: String {
+        return "</" + self.tagName + ">"
+    }
+
+}
+
+
+
 // Element methods
 
 extension ElementData {
@@ -74,3 +130,22 @@ extension ElementData {
         }
     }
 }
+
+
+public func == (lhs: NodeType, rhs: NodeType) -> Bool {
+    switch (lhs, rhs) {
+        case (.Element(let ed1), .Element(let ed2)):
+            return ed1 == ed2
+        case (.Text(let t1), .Text(let t2)):
+            return t1 == t2
+        default:
+            return false
+    }
+}
+
+
+public func == (lhs: ElementData, rhs: ElementData) -> Bool {
+    return lhs.tagName == rhs.tagName && lhs.attributes == rhs.attributes
+}
+
+
