@@ -94,7 +94,7 @@ extension Parser {
     
     // Parse a tag or attribute name.
     mutating func parseTagName() -> String {
-        return self.consumeWhile( {c in c.isMemberOf(NSCharacterSet.alphanumericCharacterSet()) })
+        return self.consumeWhile( {$0.isMemberOf(NSCharacterSet.alphanumericCharacterSet()) })
     }
     
     // Parse a list of name="value" pairs, separated by whitespace.
@@ -123,19 +123,19 @@ extension Parser {
     mutating func parseAttrValue() -> String {
         let openQuote = self.consumeCharacter()
         assert(openQuote == "\"" || openQuote == "'")
-        let value = self.consumeWhile( {c in c != openQuote} )
+        let value = self.consumeWhile( {$0 != openQuote} )
         assert(self.consumeCharacter() == openQuote)
         return value
     }
     
     // Parse a text node.
     mutating func parseText() -> Node {
-        return Node(data: self.consumeWhile({c in c != "<" }))
+        return Node(data: self.consumeWhile({$0 != "<" }))
     }
     
     // Consume and discard zero or more whitespace Character.
     mutating func consumeWhitespace() {
-        self.consumeWhile( {c in c.isMemberOf(NSCharacterSet.whitespaceCharacterSet()) })
+        self.consumeWhile( {$0.isMemberOf(NSCharacterSet.whitespaceCharacterSet()) })
     }
     
     // Consume Character until `test` returns false.
@@ -155,7 +155,7 @@ extension Parser {
     }
     
     // Read the current Character without consuming it.
-    func nextCharacter() -> Character{
+    func nextCharacter() -> Character {
         return Character(input[self.pos])
     }
     
