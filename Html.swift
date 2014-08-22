@@ -22,16 +22,21 @@ import Foundation
 struct Parser {
     var pos: String.Index
     let input: String
+}
+
+
+extension Parser {
 
     init(input: String) {
         self.input = input
         self.pos = self.input.startIndex
     }
+
 }
 
 // Parse an HTML document and return the root element.
 public func parse(source: String) -> Node {
-    var parser = Parser(input: source)
+    var parser = Parser(pos: source.startIndex, input: source)
     let nodes = parser.parseNodes()
     // If the document contains a root element, just return it. Otherwise, create one.
     if nodes.count == 1 {
