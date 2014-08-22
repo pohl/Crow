@@ -20,11 +20,11 @@
 import Foundation
 
 struct Parser {
-    var pos: String.UnicodeScalarView.Index
-    let input: String.UnicodeScalarView
+    var pos: String.Index
+    let input: String
 
     init(input: String) {
-        self.input = input.unicodeScalars
+        self.input = input
         self.pos = self.input.startIndex
     }
 }
@@ -151,19 +151,19 @@ extension Parser {
     mutating func consumeCharacter() -> Character {
         let result = input[self.pos]
         self.pos = self.pos.successor()
-        return Character(result)
+        return result
     }
     
     // Read the current Character without consuming it.
     func nextCharacter() -> Character {
-        return Character(input[self.pos])
+        return input[self.pos]
     }
     
     // Does the current input start with the given string?
     func startsWith(s: String) -> Bool {
         var index = self.pos
         for character in s {
-            if character != Character(self.input[index]) {
+            if character != self.input[index] {
                 return false
             }
             index = index.successor()

@@ -2,16 +2,6 @@
 
 import Cocoa
 
-var str = "Hello, playground"
-
-let scalars = str.unicodeScalars
-
-let char : Character = "A"
-
-
-
-
-let i = scalars.startIndex
-
-let s = scalars[i]
-
+var s = "Fnord"
+let start = s.startIndex
+let test = s[start.successor()]
