@@ -166,14 +166,7 @@ extension Parser {
     
     // Does the current input start with the given string?
     func startsWith(s: String) -> Bool {
-        var index = self.pos
-        for character in s {
-            if character != self.input[index] {
-                return false
-            }
-            index = index.successor()
-        }
-        return true
+        return self.input.substringFromIndex(self.pos).hasPrefix(s)
     }
     
     // Return true if all input is consumed.
