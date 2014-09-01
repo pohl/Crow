@@ -22,7 +22,7 @@ class CrowTests: XCTestCase {
     }
     
     func testParserFoundation() {
-        var parser = Parser(input:"    A    BC")
+        var parser = HtmlParser(input:"    A    BC")
         XCTAssert(parser.nextCharacter() == " ")
         parser.consumeWhitespace()
         XCTAssert(parser.nextCharacter() == "A")
@@ -40,7 +40,7 @@ class CrowTests: XCTestCase {
     }
     
     func testParseTextNode() {
-        var parser = Parser(input:"this is a test</p>")
+        var parser = HtmlParser(input:"this is a test</p>")
         XCTAssert(parser.nextCharacter() == "t")
         let node: Node = parser.parseText()
         XCTAssert(parser.nextCharacter() == "<")
@@ -48,7 +48,7 @@ class CrowTests: XCTestCase {
     }
     
     func testParseTagName() {
-        var parser = Parser(input:"div>fnord")
+        var parser = HtmlParser(input:"div>fnord")
         XCTAssert(parser.nextCharacter() == "d")
         let name = parser.parseTagName()
         XCTAssert(name == "div")
@@ -56,7 +56,7 @@ class CrowTests: XCTestCase {
     }
     
     func testStartsWith() {
-        var parser = Parser(input:"</fnord>")
+        var parser = HtmlParser(input:"</fnord>")
         XCTAssert(parser.startsWith("<"))
         XCTAssert(parser.startsWith("</"))
         XCTAssert(parser.startsWith("</fno"))
@@ -64,7 +64,7 @@ class CrowTests: XCTestCase {
     
 
     func testParseDivNodeWithText() {
-        var parser = Parser(input:"<div>banana hammock</div>")
+        var parser = HtmlParser(input:"<div>banana hammock</div>")
         XCTAssert(parser.nextCharacter() == "<")
         let node: Node = parser.parseElement()
         XCTAssert(parser.eof())

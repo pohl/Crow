@@ -5,7 +5,7 @@
 //  Created by Pohl Longsine on 8/17/14.
 //  Copyright (c) 2014 the screaming organization. All rights reserved.
 //
-// A simple parser for a tiny subset of HTML.
+// A simple Parser for a tiny subset of HTML.
 //
 // Can parse basic opening and closing tags, and text nodes.
 //
@@ -19,13 +19,13 @@
 
 import Foundation
 
-struct Parser {
+struct HtmlParser {
     var pos: String.Index
     let input: String
 }
 
 
-extension Parser {
+extension HtmlParser {
 
     init(input: String) {
         self.input = input
@@ -36,7 +36,7 @@ extension Parser {
 
 // Parse an HTML document and return the root element.
 public func parse(source: String) -> Node {
-    var parser = Parser(pos: source.startIndex, input: source)
+    var parser = HtmlParser(pos: source.startIndex, input: source)
     let nodes = parser.parseNodes()
     // If the document contains a root element, just return it. Otherwise, create one.
     if nodes.count == 1 {
@@ -55,7 +55,7 @@ extension Character {
 
 }
 
-extension Parser {
+extension HtmlParser {
     // Parse a sequence of sibling nodes.
     mutating func parseNodes() -> [Node] {
         var nodes: [Node] = []
