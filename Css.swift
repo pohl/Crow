@@ -112,6 +112,16 @@ struct CssParser {
 }
 
 extension CssParser {
+    
+    init(input: String) {
+        self.input = input
+        self.pos = self.input.startIndex
+    }
+    
+}
+
+
+extension CssParser {
     // Parse a list of rule sets, separated by optional whitespace.
     mutating func parseRules() -> [Rule] {
         var rules: [Rule] = []
@@ -133,7 +143,7 @@ extension CssParser {
     // Parse a comma-separated list of selectors.
     mutating func parseSelectors() -> [Selector] {
         var selectors: [Selector] = []
-        outerLoop: while (true)  {
+        outerLoop: while true {
             selectors.append(.Simple(self.parseSimpleSelector()))
             self.consumeWhitespace()
             let c = self.nextCharacter()
@@ -157,7 +167,7 @@ extension CssParser {
     // Parse one simple selector, e.g.: `type#id.class1.class2.class3`
     mutating func parseSimpleSelector() -> SimpleSelector {
         var selector = SimpleSelector(tagName: nil, id: nil, clazz: [])
-        while !self.eof() {
+        outerLoop: while !self.eof() {
             switch self.nextCharacter() {
             case "#":
                 self.consumeCharacter()
@@ -171,7 +181,7 @@ extension CssParser {
             case let c where validIdentifierChar(c):
                 selector.tagName = self.parseIdentifier()
             case _:
-                break
+                break outerLoop
             }
         }
         return selector;
@@ -181,11 +191,11 @@ extension CssParser {
     mutating func parseDeclarations() -> [Declaration] {
         assert(self.consumeCharacter() == "{")
         var declarations: [Declaration] = []
-        while (true)  {
+        while true  {
             self.consumeWhitespace()
             if self.nextCharacter() == "}" {
                 self.consumeCharacter()
-                break;
+                break
             }
             declarations.append(self.parseDeclaration())
         }
@@ -201,8 +211,7 @@ extension CssParser {
         self.consumeWhitespace()
         let value = self.parseValue()
         self.consumeWhitespace()
-        assert(self.consumeCharacter() == ";")
-        
+        assert(self.consumeCharacter() == ";")        
         return Declaration (name: propertyName, value: value)
     }
 
@@ -248,7 +257,8 @@ extension CssParser {
     // Parse two hexadecimal digits.
     mutating func parseHexPair() -> UInt8 {
         let plusTwo = self.pos.successor().successor()
-        let s = self.input.substringFromIndex(self.pos).substringWithRange(Range(start: self.pos, end: plusTwo))
+        let hexPairRange = Range(start: self.pos, end: plusTwo)
+        let s = self.input.substringWithRange(hexPairRange)
         self.pos = plusTwo
         var result: CUnsignedInt = 0
         let success = NSScanner(string: s).scanHexInt(&result)
@@ -262,7 +272,7 @@ extension CssParser {
 
     // Consume and discard zero or more whitespace Character.
     mutating func consumeWhitespace() {
-        self.consumeWhile( {$0.isMemberOf(NSCharacterSet.whitespaceCharacterSet()) })
+        self.consumeWhile( {$0.isMemberOf(NSCharacterSet.whitespaceAndNewlineCharacterSet()) })
     }
     
     // Consume Character until `test` returns false.
@@ -293,26 +303,44 @@ extension CssParser {
     
 }
 
-func > (left:Specificity, right:Specificity) -> Bool {
-    if left.0 == right.0 {
-        if left.1 == right.1 {
-            return left.2 > right.2
-        } else {
-            return left.1 > right.1
-        }
-    } else {
-        return left.0 > right.0
-    }
-}
-
-func > (left: Selector, right: Selector) -> Bool {
-    return left.specificity > right.specificity
-}
-
 func validIdentifierChar(c: Character) -> Bool {
     switch c {
-        case "a"..."z", "A"..."Z", "0"..."9", "-", "_": return true // TODO: Include U+00A0 and higher.
-        case _: return false
+    case "a"..."z", "A"..."Z", "0"..."9", "-", "_": return true // TODO: Include U+00A0 and higher.
+    case _: return false
     }
 }
+
+func > (lhs:Specificity, rhs:Specificity) -> Bool {
+    if lhs.0 == rhs.0 {
+        if lhs.1 == rhs.1 {
+            return lhs.2 > rhs.2
+        } else {
+            return lhs.1 > rhs.1
+        }
+    } else {
+        return lhs.0 > rhs.0
+    }
+}
+
+func > (lhs: Selector, rhs: Selector) -> Bool {
+    return lhs.specificity > rhs.specificity
+}
+
+public func == (lhs: Value, rhs: Value) -> Bool {
+    switch (lhs, rhs) {
+    case (.Keyword(let k1), .Keyword(let k2)):
+        return k1 == k2
+    case (.Length(let f1, let u1), .Length(let f2, let u2)):
+        return f1 == f2 && u1 == u2
+    case (.Color(let r1, let g1, let b1, let a1), .Color(let r2, let g2, let b2, let a2)):
+        return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
+    default:
+        return false
+    }
+}
+
+public func == (lhs: SimpleSelector, rhs: SimpleSelector) -> Bool {
+    return lhs.tagName == rhs.tagName && lhs.id == rhs.id && lhs.clazz == rhs.clazz
+}
+
 

@@ -17,7 +17,6 @@ extension Foo {
                 return y == 7
         }
     }
-
 }
 
 let e: Foo = .Bar(3)
@@ -75,11 +74,10 @@ extension Selector {
 
 
 
-let nope: String? = nil
 let fooBar: [String] = ["foo","bar"]
-let ss1 = SimpleSelector(tagName: nope, id: nope, clazz: fooBar)
-let ss2 = SimpleSelector(tagName: "div", id: nope, clazz: [])
-let ss3 = SimpleSelector(tagName: nope, id: "menu", clazz: [])
+let ss1 = SimpleSelector(tagName: .None, id: .None, clazz: fooBar)
+let ss2 = SimpleSelector(tagName: "div", id: .None, clazz: [])
+let ss3 = SimpleSelector(tagName: .None, id: "menu", clazz: [])
 
 let s1: Selector = .Simple(ss1)
 let s2 = Selector.Simple(ss2)
@@ -149,3 +147,18 @@ selectors.sort { $0 > $1 }
 let descriptions = selectors.map { $0.description }
 
 descriptions
+
+extension Character {
+    
+    func isMemberOf(set: NSCharacterSet) -> Bool {
+        let bridgedCharacter = (String(self) as NSString).characterAtIndex(0)
+        return set.characterIsMember(bridgedCharacter)
+    }
+    
+}
+
+
+for c in "   \n  \t   " {
+    println("\(c.isMemberOf(NSCharacterSet.whitespaceAndNewlineCharacterSet()))")
+}
+
