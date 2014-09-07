@@ -35,7 +35,7 @@ extension HtmlParser {
 }
 
 // Parse an HTML document and return the root element.
-public func parse(source: String) -> Node {
+public func parseHtml(source: String) -> Node {
     var parser = HtmlParser(pos: source.startIndex, input: source)
     let nodes = parser.parseNodes()
     // If the document contains a root element, just return it. Otherwise, create one.

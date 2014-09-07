@@ -8,10 +8,9 @@
 
 import Cocoa
 import XCTest
-import Crow
 
 
-class CrowTests: XCTestCase {
+class HtmlTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -74,14 +73,14 @@ class CrowTests: XCTestCase {
         XCTAssert(child.nodeType == NodeType.Text("banana hammock"))
     }
     
-    func testExample() {
-        let bundle: NSBundle = NSBundle(forClass: CrowTests.classForKeyedArchiver())
+    func testHtmlParser() {
+        let bundle: NSBundle = NSBundle(forClass: HtmlTests.classForKeyedArchiver())
         let filePath = bundle.pathForResource("test", ofType: "html")
         XCTAssert(filePath != nil, "Found html resource")
         var error: NSError? = nil
         var html: String? = String.stringWithContentsOfFile(filePath!, encoding: NSUTF8StringEncoding, error: &error)
         XCTAssert(html != nil, "read html input")
-        let node: Node = parse(html!)
+        let node: Node = parseHtml(html!)
         println("dump of DOM: \n\(node.description)")
     }
 
