@@ -78,14 +78,14 @@ class CssTests: XCTestCase {
     func testParseSimpleSelector() {
         var parser = CssParser(input:"span#name {")
         let s: SimpleSelector = parser.parseSimpleSelector()
-        let expected = SimpleSelector(tagName: "span", id: "name", clazz: [])
+        let expected = SimpleSelector(tagName: "span", id: "name", classes: [])
         XCTAssert(s == expected)
     }
 
     func testParseSimpleSelectorWithClasses() {
         var parser = CssParser(input:".inner {")
         let s: SimpleSelector = parser.parseSimpleSelector()
-        let expected = SimpleSelector(tagName: .None, id: .None, clazz: ["inner"])
+        let expected = SimpleSelector(tagName: .None, id: .None, classes: ["inner"])
         XCTAssert(s == expected)
     }
     

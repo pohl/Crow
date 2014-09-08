@@ -31,18 +31,18 @@ public enum Selector {
 public struct SimpleSelector {
     public var tagName: String?
     public var id: String?
-    public var clazz: [String]
+    public var classes: [String]
     
     public var description: String {
         switch (self.tagName, self.id) {
         case (.Some(let t), .None):
-            return "t:\(t), \(clazz)"
+            return "t:\(t), \(classes)"
         case (.None, .Some(let i)):
-            return "i:\(i), \(clazz)"
+            return "i:\(i), \(classes)"
         case (.Some(let t), .Some(let i)):
-            return "t: \(t), i:\(i), \(clazz)"
+            return "t: \(t), i:\(i), \(classes)"
         case (.None, .None):
-            return "\(clazz)"
+            return "\(classes)"
         }
     }
 }
@@ -57,7 +57,7 @@ extension Selector {
         switch self {
         case .Simple(let simple):
             let a = simple.id == nil ? 0 : 1
-            let b = simple.clazz.count
+            let b = simple.classes.count
             let c = simple.tagName == nil ? 0 : 1
             return Specificity(a, b, c)
         }
@@ -75,9 +75,9 @@ extension Selector {
 
 
 let fooBar: [String] = ["foo","bar"]
-let ss1 = SimpleSelector(tagName: .None, id: .None, clazz: fooBar)
-let ss2 = SimpleSelector(tagName: "div", id: .None, clazz: [])
-let ss3 = SimpleSelector(tagName: .None, id: "menu", clazz: [])
+let ss1 = SimpleSelector(tagName: .None, id: .None, classes: fooBar)
+let ss2 = SimpleSelector(tagName: "div", id: .None, classes: [])
+let ss3 = SimpleSelector(tagName: .None, id: "menu", classes: [])
 
 let s1: Selector = .Simple(ss1)
 let s2 = Selector.Simple(ss2)

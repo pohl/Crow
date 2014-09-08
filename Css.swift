@@ -33,7 +33,7 @@ public enum Selector {
 public struct SimpleSelector {
     public var tagName: String?
     public var id: String?
-    public var clazz: [String]
+    public var classes: [String]
 }
 
 public struct Declaration {
@@ -59,7 +59,7 @@ extension Selector {
         switch self {
         case .Simple(let simple):
             let a = simple.id == nil ? 0 : 1
-            let b = simple.clazz.count
+            let b = simple.classes.count
             let c = simple.tagName == nil ? 0 : 1
             return Specificity(a, b, c)
         }
@@ -78,13 +78,13 @@ extension SimpleSelector {
     public var description: String {
         switch (self.tagName, self.id) {
         case (.Some(let t), .None):
-            return "t:\(t), \(clazz)"
+            return "t:\(t), \(classes)"
         case (.None, .Some(let i)):
-            return "i:\(i), \(clazz)"
+            return "i:\(i), \(classes)"
         case (.Some(let t), .Some(let i)):
-            return "t: \(t), i:\(i), \(clazz)"
+            return "t: \(t), i:\(i), \(classes)"
         case (.None, .None):
-            return "\(clazz)"
+            return "\(classes)"
             }
     }
 }
@@ -166,7 +166,7 @@ extension CssParser {
     
     // Parse one simple selector, e.g.: `type#id.class1.class2.class3`
     mutating func parseSimpleSelector() -> SimpleSelector {
-        var selector = SimpleSelector(tagName: nil, id: nil, clazz: [])
+        var selector = SimpleSelector(tagName: nil, id: nil, classes: [])
         outerLoop: while !self.eof() {
             switch self.nextCharacter() {
             case "#":
@@ -174,7 +174,7 @@ extension CssParser {
                 selector.id = self.parseIdentifier()
             case ".":
                 self.consumeCharacter()
-                selector.clazz.append(self.parseIdentifier())
+                selector.classes.append(self.parseIdentifier())
             case "*":
                 // universal selector
                 self.consumeCharacter()
@@ -340,7 +340,7 @@ public func == (lhs: Value, rhs: Value) -> Bool {
 }
 
 public func == (lhs: SimpleSelector, rhs: SimpleSelector) -> Bool {
-    return lhs.tagName == rhs.tagName && lhs.id == rhs.id && lhs.clazz == rhs.clazz
+    return lhs.tagName == rhs.tagName && lhs.id == rhs.id && lhs.classes == rhs.classes
 }
 
 
