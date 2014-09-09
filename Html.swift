@@ -79,22 +79,24 @@ extension HtmlParser {
     
     // Parse a single element, including its open tag, contents, and closing tag.
     mutating func parseElement() -> Node {
-        // Opening tag.
-        assert(self.consumeCharacter() == "<")
-        let tagName = self.parseTagName()
+        let openPointy = self.consumeCharacter()
+        assert(openPointy == "<")
+        let openTagName = self.parseTagName()
         let attrs = self.parseAttributes()
-        assert(self.consumeCharacter() == ">")
-        
+        let closePointy = self.consumeCharacter()
+        assert(closePointy == ">")
         // Contents.
         let children = self.parseNodes()
-        
         // Closing tag.
-        assert(self.consumeCharacter() == "<")
-        assert(self.consumeCharacter() == "/")
-        assert(self.parseTagName() == tagName)
-        assert(self.consumeCharacter() == ">")
-        
-        return Node(name: tagName, attrs: attrs, children: children)
+        let op = self.consumeCharacter()
+        assert(op == "<")
+        let slash = self.consumeCharacter()
+        assert(slash == "/")
+        let closeTagName = self.parseTagName()
+        assert(closeTagName == openTagName)
+        let cp = self.consumeCharacter()
+        assert(cp == ">")
+        return Node(name: openTagName, attrs: attrs, children: children)
     }
     
     // Parse a tag or attribute name.
@@ -119,7 +121,8 @@ extension HtmlParser {
     // Parse a single name="value" pair.
     mutating func parseAttr() -> (String, String) {
         let name = self.parseTagName()
-        assert(self.consumeCharacter() == "=")
+        let equals = self.consumeCharacter()
+        assert(equals == "=")
         let value = self.parseAttrValue()
         return (name, value)
     }
@@ -129,7 +132,8 @@ extension HtmlParser {
         let openQuote = self.consumeCharacter()
         assert(openQuote == "\"" || openQuote == "'")
         let value = self.consumeWhile( {$0 != openQuote} )
-        assert(self.consumeCharacter() == openQuote)
+        let closeQuote = self.consumeCharacter()
+        assert(closeQuote == openQuote)
         return value
     }
     

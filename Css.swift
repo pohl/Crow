@@ -189,7 +189,8 @@ extension CssParser {
     
     // Parse a list of declarations enclosed in `{ ... }`.
     mutating func parseDeclarations() -> [Declaration] {
-        assert(self.consumeCharacter() == "{")
+        let leftCurly = self.consumeCharacter();
+        assert(leftCurly == "{")
         var declarations: [Declaration] = []
         while true  {
             self.consumeWhitespace()
@@ -207,11 +208,13 @@ extension CssParser {
     mutating func parseDeclaration() -> Declaration {
         let propertyName = self.parseIdentifier()
         self.consumeWhitespace()
-        assert(self.consumeCharacter() == ":")
+        let colon = self.consumeCharacter()
+        assert(colon == ":")
         self.consumeWhitespace()
         let value = self.parseValue()
         self.consumeWhitespace()
-        assert(self.consumeCharacter() == ";")        
+        let semicolon = self.consumeCharacter()
+        assert(semicolon == ";")
         return Declaration (name: propertyName, value: value)
     }
 
@@ -250,7 +253,8 @@ extension CssParser {
     }
 
     mutating func parseColor() -> Value {
-        assert(self.consumeCharacter() == "#")
+        let hash = self.consumeCharacter();
+        assert(hash == "#")
         return .Color(self.parseHexPair(), self.parseHexPair(), self.parseHexPair(), 255)
     }
     
