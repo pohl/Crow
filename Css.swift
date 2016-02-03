@@ -158,7 +158,7 @@ extension CssParser {
             }
         }
         // Return selectors with highest specificity first, for use in matching.
-        selectors.sort {
+        selectors.sortInPlace {
             $0 > $1
         }
         return selectors
