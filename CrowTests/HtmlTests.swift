@@ -55,7 +55,7 @@ class HtmlTests: XCTestCase {
     }
     
     func testStartsWith() {
-        var parser = HtmlParser(input:"</fnord>")
+        let parser = HtmlParser(input:"</fnord>")
         XCTAssert(parser.startsWith("<"))
         XCTAssert(parser.startsWith("</"))
         XCTAssert(parser.startsWith("</fno"))
@@ -74,14 +74,18 @@ class HtmlTests: XCTestCase {
     }
     
     func testHtmlParser() {
-        let bundle: NSBundle = NSBundle(forClass: HtmlTests.classForKeyedArchiver())
+        let bundle: NSBundle = NSBundle(forClass: HtmlTests.classForKeyedArchiver()!)
         let filePath = bundle.pathForResource("test", ofType: "html")
         XCTAssert(filePath != nil, "Found html resource")
-        var error: NSError? = nil
-        var html: String? = String.stringWithContentsOfFile(filePath!, encoding: NSUTF8StringEncoding, error: &error)
-        XCTAssert(html != nil, "read html input")
-        let node: Node = parseHtml(html!)
-        println("dump of DOM: \n\(node.description)")
+        do {
+        let html: String? = try String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+            XCTAssert(html != nil, "read html input")
+            let node: Node = parseHtml(html!)
+            print("dump of DOM: \n\(node.description)")
+        }
+        catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
 
        

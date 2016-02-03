@@ -90,15 +90,18 @@ class CssTests: XCTestCase {
     }
     
     func testCssParser() {
-        let bundle: NSBundle = NSBundle(forClass: CssTests.classForKeyedArchiver())
+        let bundle: NSBundle = NSBundle(forClass: CssTests.classForKeyedArchiver()!)
         let filePath = bundle.pathForResource("test", ofType: "css")
         XCTAssert(filePath != nil, "Found css resource")
-        var error: NSError? = nil
-        var css: String? = String.stringWithContentsOfFile(filePath!, encoding: NSUTF8StringEncoding, error: &error)
-        XCTAssert(css != nil, "read css input")
-        let ss: Stylesheet = parseCss(css!)
-        //println("dump of CSS: \n\(ss.description)")
-        XCTAssert(ss.rules.count == 6)
+        do {
+            let css: String? = try String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+            XCTAssert(css != nil, "read css input")
+            let ss: Stylesheet = parseCss(css!)
+            XCTAssert(ss.rules.count == 6)
+        }
+        catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     

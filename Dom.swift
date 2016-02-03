@@ -57,7 +57,7 @@ extension Node {
 }
 
 
-extension Node: Printable {
+extension Node: CustomStringConvertible {
 
     public var description: String {
         switch self.nodeType {
@@ -74,7 +74,7 @@ extension Node: Printable {
 
 }
 
-extension NodeType: Printable {
+extension NodeType: CustomStringConvertible {
 
     public var description: String {
         switch self {
@@ -88,7 +88,7 @@ extension NodeType: Printable {
 
 }
 
-extension ElementData: Printable {
+extension ElementData: CustomStringConvertible {
 
     public var description: String {
         var b = "<" + self.tagName
