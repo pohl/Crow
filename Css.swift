@@ -147,6 +147,7 @@ extension CssParser {
             selectors.append(.Simple(self.parseSimpleSelector()))
             self.consumeWhitespace()
             let c = self.nextCharacter()
+            print(c)
             switch c {
                 case ",":
                     self.consumeCharacter()
@@ -241,7 +242,7 @@ extension CssParser {
             }
         }
         var result: Float = 0.0
-        let success = NSScanner(string: s).scanFloat(&result)
+        _ = NSScanner(string: s).scanFloat(&result)
         return Float(result)
     }
 
@@ -265,7 +266,7 @@ extension CssParser {
         let s = self.input.substringWithRange(hexPairRange)
         self.pos = plusTwo
         var result: CUnsignedInt = 0
-        let success = NSScanner(string: s).scanHexInt(&result)
+        _ = NSScanner(string: s).scanHexInt(&result)
         return UInt8(result)
     }
     
